@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>App</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<script>
+    $(document).ready(function() {
+        // JavaScript code to make an AJAX request
+        $.ajax({
+            url: 'appointments.php',
+            type: 'GET',
+            dataType: 'html',
+            success: function(data) {
+                // Handle the JSON data here
+                if (data) {
+                    $('#appointment-table').html(data);
+                }
+            },
+            error: function(error) {
+                console.error('Ajax error:', error);
+            }
+        });
+
+
+    });
+</script>
+<body>
+<h1>Appoiuntments</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Guest(s)</th>
+        <th>
+            Action(s)
+        </th>
+    </tr>
+    </thead>
+    <tbody id="appointment-table">
+
+    </tbody>
+</table>
+<a href="new_appointment.html" class="btn btn-primary">Add appointment</a>
+<a href="login.php" class="btn-primary">Logout</a>
+
+</body>
+</html>
+
+
